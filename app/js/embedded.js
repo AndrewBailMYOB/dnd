@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import Red from "./dnd/red";
+import {observe} from "./dnd/observer";
+
 export default class RootComponent {
   render(container) {
     this.container = container;
@@ -9,8 +12,10 @@ export default class RootComponent {
 
   renderComponent() {
     ReactDOM.render(
-      <div styles={{ color: "red" }}>
-        This is the react.
+      <div style={{backgroundColor: "purple", width:"100vw", height: "100vh"}}>
+        {
+          observe((greenPlace) => (<Red greenPlace={greenPlace} />))
+        }
       </div>,
       this.container,
     );
